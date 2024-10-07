@@ -1,5 +1,15 @@
 #!/bin/bash
 
+if [ ! -f "proxies.txt" ]; then
+    echo "Creating proxies.txt..."
+    touch proxies.txt
+fi
+
+if [ ! -f "data.txt" ]; then
+    echo "Creating data.txt..."
+    touch data.txt
+fi
+
 # Проверка на наличие папки venv
 if [ ! -d "venv" ]; then
     echo "Creating virtual environment..."

@@ -1,5 +1,15 @@
 @echo off
 
+if not exist proxies.txt (
+    echo Creating proxies.txt...
+    touch proxies.txt
+)
+
+if not exist data.txt (
+    echo Creating data.txt...
+    touch data.txt
+)
+
 if not exist venv (
     echo Creating virtual environment...
     python -m venv venv
