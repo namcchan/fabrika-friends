@@ -163,3 +163,7 @@ cython_debug/
 sessions/
 data.txt
 proxies.txt
+
+.env
+sessions
+data.txt

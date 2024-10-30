@@ -1,5 +1,6 @@
 import asyncio
 import random
+import sys
 import traceback
 from itertools import cycle
 from time import time
@@ -19,6 +20,7 @@ from random import randint
 
 from datetime import datetime, timezone
 import urllib3
+from bot.utils.ps import check_base_url
 
 
 def convert_to_unix(time_stamp):
@@ -373,6 +375,14 @@ class Tapper:
         token_live_time = randint(3400, 3600)
         while True:
             try:
+                if check_base_url() is False:
+                    if settings.ADVANCED_ANTI_DETECTION:
+                        sys.exit(
+                            "Detected index js file change. Contact me to check if it's safe to continue: https://t.me/vanhbakaaa")
+                    else:
+                        sys.exit(
+                            "Detected api change! Stopped the bot for safety. Contact me here to update the bot: https://t.me/vanhbakaaa")
+
                 if time() - access_token_created_time >= token_live_time:
                     tg_web_data = self.query
                     self.auth_token = tg_web_data
